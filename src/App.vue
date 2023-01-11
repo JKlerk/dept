@@ -26,7 +26,7 @@ function afterEnter() {
 </script>
 <style>
 .slide-y-enter-active {
-    @apply transform ease-out duration-500 transition -translate-y-full;
+    @apply -translate-y-full transform transition duration-500 ease-out;
 }
 
 .slide-y-enter-to {
@@ -34,10 +34,10 @@ function afterEnter() {
 }
 
 .slide-y-leave-active {
-    @apply transition ease-in duration-500;
+    @apply transition duration-500 ease-in;
 }
 
 .slide-y-leave-to {
-    @apply duration-500 transition -translate-y-full;
+    @apply -translate-y-full transition duration-500;
 }
 </style>

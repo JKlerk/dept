@@ -1,7 +1,7 @@
 <template>
     <div class="bg-neutral-900 py-10">
-        <div class="mx-auto max-w-7xl">
-            <div class="">
+        <div class="mx-auto grid max-w-7xl">
+            <div>
                 <div class="grid grid-cols-3 border-b border-neutral-700 px-4 pb-8 lg:px-0">
                     <p class="hidden font-inter text-4xl font-semibold uppercase text-white lg:block">Dept</p>
                     <div class="col-span-2 block space-y-2 font-teko text-3xl uppercase text-white lg:col-span-1 lg:flex lg:space-y-0 lg:space-x-8 lg:text-lg">

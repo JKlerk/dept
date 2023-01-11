@@ -26,7 +26,20 @@
                 </div>
             </div>
         </div>
-        <FooterComponent></FooterComponent>
+        <div class="relative">
+            <FooterComponent></FooterComponent>
+            <div @click="scrollToTop" class="absolute bottom-0 right-0 col-span-1 hidden h-full w-1/12 cursor-pointer items-center justify-center bg-white lg:flex">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 stroke-indigo-500" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="16" y1="9" x2="12" y2="5" />
+                        <line x1="8" y1="9" x2="12" y2="5" />
+                    </svg>
+                    <h1 class="text-center font-teko text-2xl text-indigo-500">TOP</h1>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script lang="ts" setup>
@@ -42,4 +55,12 @@ import KlmLogo from '@/components/icons/KlmLogo.vue'
 import AbnAmroLogo from '@/components/icons/AbnAmroLogo.vue'
 import PatheLogo from '@/components/icons/PatheLogo.vue'
 import { cases } from '@/data'
+
+function scrollToTop() {
+    window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+    })
+}
 </script>
