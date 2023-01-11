@@ -1,28 +1,28 @@
 <template>
     <div>
-        <div class="max-w-7xl mx-auto">
+        <div class="mx-auto max-w-7xl">
             <HeaderComponent></HeaderComponent>
-            <div class="grid grid-cols-3 gap-8 mt-10">
+            <div class="mt-10 grid grid-cols-2 gap-8 px-4 lg:grid-cols-3 lg:px-0">
                 <CaseComponent :key="item.id" v-for="item in cases" :case="item"></CaseComponent>
             </div>
         </div>
-        <div class="bg-gray-100 py-20 mt-20">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center space-y-4">
-                    <h1 class="text-5xl font-teko font-light uppercase">Clients</h1>
-                    <div class="w-1/2 mx-auto">
+        <div class="mt-20 bg-gray-100 py-20">
+            <div class="mx-auto max-w-7xl">
+                <div class="space-y-4 text-center">
+                    <h1 class="font-teko text-5xl font-light uppercase">Clients</h1>
+                    <div class="mx-auto px-4 lg:w-1/2 lg:px-0">
                         <p class="">We value a great working relationship with our clients above all else. It's why they often come with our parties. It's also why we're able to challenge and inspire them to reach for the stars.</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-4 mt-20">
-                    <NiveaLogo class="w-36 h-36 mx-auto"></NiveaLogo>
-                    <TransaviaLogo class="w-36 h-36 mx-auto"></TransaviaLogo>
-                    <ZalandoLogo class="w-36 h-36 mx-auto"></ZalandoLogo>
-                    <TomTomLogo class="w-36 h-36 mx-auto"></TomTomLogo>
-                    <MicrosoftLogo class="w-36 h-36 mx-auto"></MicrosoftLogo>
-                    <KlmLogo class="w-36 h-36 mx-auto"></KlmLogo>
-                    <AbnAmroLogo class="w-36 h-36 mx-auto"></AbnAmroLogo>
-                    <PatheLogo class="w-36 h-36 mx-auto"></PatheLogo>
+                <div class="mt-20 grid grid-cols-2 lg:grid-cols-4">
+                    <NiveaLogo class="mx-auto h-36 w-36"></NiveaLogo>
+                    <TransaviaLogo class="mx-auto h-36 w-36"></TransaviaLogo>
+                    <ZalandoLogo class="mx-auto h-36 w-36"></ZalandoLogo>
+                    <TomTomLogo class="mx-auto h-36 w-36"></TomTomLogo>
+                    <MicrosoftLogo class="mx-auto hidden h-36 w-36 lg:block"></MicrosoftLogo>
+                    <KlmLogo class="mx-auto hidden h-36 w-36 lg:block"></KlmLogo>
+                    <AbnAmroLogo class="mx-auto hidden h-36 w-36 lg:block"></AbnAmroLogo>
+                    <PatheLogo class="mx-auto hidden h-36 w-36 lg:block"></PatheLogo>
                 </div>
             </div>
         </div>

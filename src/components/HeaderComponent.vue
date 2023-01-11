@@ -1,11 +1,11 @@
 <template>
-    <div class="flex border-b py-4">
-        <h1 class="text-4xl font-teko font-bold">DEPT</h1>
+    <div class="flex border-b py-4 px-5 lg:px-0">
+        <h1 class="font-teko text-4xl font-bold">DEPT</h1>
         <div class="flex flex-1 justify-end">
             <svg
                 @click="store.toggleNav(true)"
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-10 w-10 stroke-neutral-900 cursor-pointer hover:scale-125 transition-transform duration-100"
+                class="h-10 w-10 cursor-pointer stroke-neutral-900 transition-transform duration-100 hover:scale-125"
                 viewBox="0 0 24 24"
                 stroke-linecap="round"
                 stroke-linejoin="round"
