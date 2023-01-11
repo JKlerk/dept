@@ -3,7 +3,7 @@
         <div class="mx-auto max-w-7xl">
             <HeaderComponent></HeaderComponent>
             <div class="mt-4 flex">
-                <div class="grid grid-cols-2 gap-x-4">
+                <div class="grid grid-cols-2 gap-x-4 px-2">
                     <div class="my-auto cursor-pointer rounded-lg p-1">
                         <svg
                             @click="state.viewType = 'list'"
@@ -45,13 +45,13 @@
                         </svg>
                     </div>
                 </div>
-                <div class="relative flex flex-1 justify-end">
+                <div class="relative mr-2 flex flex-1 justify-end">
                     <div @click="state.toggleFilter = true" class="my-auto flex cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-6 w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M5.5 5h13a1 1 0 0 1 .5 1.5l-5 5.5l0 7l-4 -3l0 -4l-5 -5.5a1 1 0 0 1 .5 -1.5" />
                         </svg>
-                        <p class="my-auto mr-4" for="Active Filter">Filter</p>
+                        <p class="my-auto" for="Active Filter">Filter</p>
                     </div>
                     <div v-if="state.toggleFilter" class="absolute top-12 z-10 w-64 space-y-4 rounded-lg bg-neutral-900 p-5 font-inter">
                         <div class="flex">
