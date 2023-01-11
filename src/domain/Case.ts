@@ -3,4 +3,5 @@ export type Case = {
     name: string
     company: string
     src: string
+    category: string
 }
