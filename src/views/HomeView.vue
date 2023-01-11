@@ -2,16 +2,84 @@
     <div>
         <div class="mx-auto max-w-7xl">
             <HeaderComponent></HeaderComponent>
-            <div class="mt-4 flex flex-1 justify-end">
-                <label class="my-auto mr-4" for="Active Filter">Show me</label>
-                <select class="rounded-lg border bg-white p-2" v-model="state.activeFilter">
-                    <option :value="''" selected>All Cases</option>
-                    <option class="bg-white p-4" :value="item" :key="item" v-for="item in state.categories">{{ item }}</option>
-                </select>
+            <div class="mt-4 flex">
+                <div class="grid grid-cols-2 gap-x-4">
+                    <div class="my-auto cursor-pointer rounded-lg p-1">
+                        <svg
+                            @click="state.viewType = 'list'"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-7 w-7 hover:stroke-indigo-500"
+                            :class="state.viewType === 'list' ? 'stroke-indigo-500' : 'stroke-neutral-800'"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <line x1="9" y1="6" x2="20" y2="6" />
+                            <line x1="9" y1="12" x2="20" y2="12" />
+                            <line x1="9" y1="18" x2="20" y2="18" />
+                            <line x1="5" y1="6" x2="5" y2="6.01" />
+                            <line x1="5" y1="12" x2="5" y2="12.01" />
+                            <line x1="5" y1="18" x2="5" y2="18.01" />
+                        </svg>
+                    </div>
+                    <div class="my-auto cursor-pointer rounded-lg p-1">
+                        <svg
+                            @click="state.viewType = 'grid'"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-7 w-7 hover:stroke-indigo-500"
+                            :class="state.viewType === 'grid' ? 'stroke-indigo-500' : 'stroke-neutral-800'"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <rect x="4" y="4" width="6" height="6" rx="1" />
+                            <rect x="14" y="4" width="6" height="6" rx="1" />
+                            <rect x="4" y="14" width="6" height="6" rx="1" />
+                            <rect x="14" y="14" width="6" height="6" rx="1" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="relative flex flex-1 justify-end">
+                    <div @click="state.toggleFilter = true" class="my-auto flex cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-6 w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M5.5 5h13a1 1 0 0 1 .5 1.5l-5 5.5l0 7l-4 -3l0 -4l-5 -5.5a1 1 0 0 1 .5 -1.5" />
+                        </svg>
+                        <p class="my-auto mr-4" for="Active Filter">Filter</p>
+                    </div>
+                    <div v-if="state.toggleFilter" class="absolute top-12 z-10 w-64 space-y-4 rounded-lg bg-neutral-900 p-5 font-inter">
+                        <div class="flex">
+                            <p class="font-bold text-white">Category</p>
+                            <div class="flex flex-1 justify-end">
+                                <svg @click="state.toggleFilter = false" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cursor-pointer stroke-white" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <line x1="18" y1="6" x2="6" y2="18" />
+                                    <line x1="6" y1="6" x2="18" y2="18" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p @click="state.activeFilter = ''" :class="{ 'bg-neutral-800': state.activeFilter === '' }" class="cursor-pointer rounded-lg p-2 text-sm text-white hover:bg-neutral-800">All cases</p>
+                        <div
+                            @click=";(state.activeFilter = item), (state.toggleFilter = false)"
+                            :class="{ 'bg-neutral-800': state.activeFilter === item }"
+                            class="cursor-pointer rounded-lg p-2 text-sm text-white hover:bg-neutral-800"
+                            :key="item"
+                            v-for="item in state.categories"
+                        >
+                            {{ item }}
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mt-10 grid grid-cols-2 gap-8 px-4 lg:grid-cols-3 lg:px-0">
-                <TransitionGroup>
-                    <CaseComponent :key="item.id" v-for="item in activeCases" :case="item"></CaseComponent>
+            <div class="mt-10 grid gap-8 px-4 lg:px-0" :class="state.viewType === 'grid' ? 'grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'">
+                <TransitionGroup name="list">
+                    <CaseComponent :view-type="state.viewType" :key="item.id" v-for="item in activeCases" :case="item"></CaseComponent>
                 </TransitionGroup>
             </div>
         </div>
@@ -67,6 +135,14 @@ import { cases } from '@/data'
 import { computed, onMounted, reactive } from 'vue'
 import type { Case } from '@/domain/Case'
 
+const state = reactive({
+    allCases: [] as Case[],
+    categories: [] as string[],
+    activeFilter: '',
+    toggleFilter: false,
+    viewType: 'grid',
+})
+
 function scrollToTop() {
     window.scroll({
         top: 0,
@@ -74,12 +150,6 @@ function scrollToTop() {
         behavior: 'smooth',
     })
 }
-
-const state = reactive({
-    allCases: [] as Case[],
-    categories: [] as string[],
-    activeFilter: '',
-})
 
 onMounted(() => {
     state.allCases = cases

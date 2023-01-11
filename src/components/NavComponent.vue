@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen w-full overflow-auto bg-neutral-900 px-5 pt-10 lg:px-20">
+    <div class="z-10 min-h-screen w-full overflow-auto bg-neutral-900 px-5 pt-10 lg:px-20">
         <div>
             <div class="flex flex-1 justify-end">
                 <svg
