@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-neutral-900 min-h-screen w-full pt-10 px-20 overflow-auto">
+    <div class="bg-neutral-900 pt-10 min-h-screen w-full px-20 overflow-auto">
         <div>
             <div class="flex flex-1 justify-end">
                 <svg
@@ -16,7 +16,7 @@
                     <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
             </div>
-            <div @click="store.toggleNav(false)" class="font-teko mt-10 text-white space-y-8">
+            <div @click="store.toggleNav(false)" class="font-teko mt-10 text-white space-y-8 fade-in" style="opacity: 0">
                 <RouteItem :name="'Home'"></RouteItem>
                 <RouteItem :name="'Werk'"></RouteItem>
                 <RouteItem :name="'Over'"></RouteItem>
@@ -24,8 +24,6 @@
                 <RouteItem :name="'Partners'"></RouteItem>
                 <RouteItem :name="'Stories'"></RouteItem>
                 <RouteItem :name="'Vacatures'"></RouteItem>
-                <!-- <RouteItem :name="'Events'"></RouteItem>
-                <RouteItem :name="'Contact'"></RouteItem> -->
             </div>
         </div>
     </div>
@@ -33,6 +31,7 @@
 <script lang="ts" setup>
 import { useStore } from '@/stores'
 import RouteItem from './RouteItem.vue'
+import { onMounted } from 'vue'
 
 const store = useStore()
 </script>
