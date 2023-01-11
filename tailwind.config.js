@@ -4,9 +4,8 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                roboto: ['Roboto', 'sans-serif'],
-                raleway: ['Raleway', 'sans-serif'],
                 inter: ['Inter', 'sans-serif'],
+                teko: ['Teko', 'sans-serif'],
             },
         },
     },
