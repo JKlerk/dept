@@ -1,9 +1,9 @@
 <template>
-    <div class="font-teko">
+    <div class="font-teko w-64 mx-auto">
         <img class="w-64" :src="props.case.src" />
         <div class="space-y-3 mt-2">
             <p class="text-gray-400 font-inter uppercase text-xs font-bold">{{ props.case.company }}</p>
-            <p class="text-2xl">{{ props.case.name }}</p>
+            <p class="text-2xl truncate">{{ props.case.name }}</p>
             <p class="my-auto uppercase text-blue-500">View case</p>
         </div>
     </div>

@@ -5,13 +5,8 @@
             <svg
                 @click="store.toggleNav(true)"
                 xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-menu"
-                width="44"
-                height="44"
+                class="h-10 w-10 stroke-neutral-900 cursor-pointer hover:scale-125 transition-transform duration-100"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="#2c3e50"
-                fill="none"
                 stroke-linecap="round"
                 stroke-linejoin="round"
             >

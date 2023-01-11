@@ -2,7 +2,15 @@
     <div class="bg-neutral-900 min-h-screen w-full pt-10 px-20 overflow-auto">
         <div>
             <div class="flex flex-1 justify-end">
-                <svg @click="store.toggleNav(false)" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 stroke-white x" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg
+                    @click="store.toggleNav(false)"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-8 h-8 stroke-white cursor-pointer hover:scale-125 transition-transform duration-100"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
