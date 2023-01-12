@@ -53,3 +53,41 @@
 .list-leave-active {
   position: absolute;
 }
+
+.slide-small-enter-active {
+  @apply -translate-y-12 opacity-0 transform transition duration-500 ease-out;
+}
+
+.slide-small-enter-to {
+  @apply translate-y-0 opacity-100;
+}
+
+.slide-small-leave-active {
+  @apply transition duration-500 ease-in;
+}
+
+.slide-small-leave-to {
+  @apply -translate-y-12 opacity-0 transition duration-500;
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
+}
+
+.slide-y-enter-active {
+  @apply -translate-y-full transform transition duration-500 ease-out;
+}
+
+.slide-y-enter-to {
+  @apply translate-y-0;
+}
+
+.slide-y-leave-active {
+  @apply transition duration-500 ease-in;
+}
+
+.slide-y-leave-to {
+  @apply -translate-y-full transition duration-500;
+}

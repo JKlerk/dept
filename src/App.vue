@@ -13,7 +13,6 @@ import anime from 'animejs/lib/anime.es.js'
 const store = useStore()
 
 function afterEnter() {
-    console.log('AFter enter called')
     anime.timeline().add({
         targets: '.fade-in',
         translateX: [-300, 0],
@@ -24,20 +23,3 @@ function afterEnter() {
     })
 }
 </script>
-<style>
-.slide-y-enter-active {
-    @apply -translate-y-full transform transition duration-500 ease-out;
-}
-
-.slide-y-enter-to {
-    @apply translate-y-0;
-}
-
-.slide-y-leave-active {
-    @apply transition duration-500 ease-in;
-}
-
-.slide-y-leave-to {
-    @apply -translate-y-full transition duration-500;
-}
-</style>

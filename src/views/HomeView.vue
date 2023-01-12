@@ -16,11 +16,11 @@
             </div>
             <div class="mt-4 flex">
                 <div class="grid grid-cols-2 gap-x-4 px-2">
-                    <div class="my-auto cursor-pointer rounded-lg p-1">
+                    <div class="my-auto rounded-lg p-1">
                         <svg
                             @click="state.viewType = 'list'"
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-7 w-7 hover:stroke-indigo-500"
+                            class="h-7 w-7 cursor-pointer hover:stroke-indigo-500"
                             :class="state.viewType === 'list' ? 'stroke-indigo-500' : 'stroke-neutral-800'"
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
@@ -37,11 +37,11 @@
                             <line x1="5" y1="18" x2="5" y2="18.01" />
                         </svg>
                     </div>
-                    <div class="my-auto cursor-pointer rounded-lg p-1">
+                    <div class="my-auto rounded-lg p-1">
                         <svg
                             @click="state.viewType = 'grid'"
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-7 w-7 hover:stroke-indigo-500"
+                            class="h-7 w-7 cursor-pointer hover:stroke-indigo-500"
                             :class="state.viewType === 'grid' ? 'stroke-indigo-500' : 'stroke-neutral-800'"
                             viewBox="0 0 24 24"
                             stroke-width="1.5"
@@ -65,28 +65,30 @@
                         </svg>
                         <p class="my-auto" for="Active Filter">Filter</p>
                     </div>
-                    <div v-if="state.toggleFilter" class="absolute top-12 z-10 w-64 space-y-4 rounded-lg bg-neutral-900 p-5 font-inter">
-                        <div class="flex">
-                            <p class="font-bold text-white">Category</p>
-                            <div class="flex flex-1 justify-end">
-                                <svg @click="state.toggleFilter = false" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cursor-pointer stroke-white" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <line x1="18" y1="6" x2="6" y2="18" />
-                                    <line x1="6" y1="6" x2="18" y2="18" />
-                                </svg>
+                    <Transition name="slide-small">
+                        <div v-if="state.toggleFilter" class="absolute top-12 z-10 w-64 space-y-4 rounded-lg bg-neutral-900 p-5 font-inter">
+                            <div class="flex">
+                                <p class="font-bold text-white">Category</p>
+                                <div class="flex flex-1 justify-end">
+                                    <svg @click="state.toggleFilter = false" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cursor-pointer stroke-white" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <line x1="18" y1="6" x2="6" y2="18" />
+                                        <line x1="6" y1="6" x2="18" y2="18" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <p @click="setFilter('')" :class="state.activeFilter === '' ? 'text-white' : 'text-neutral-700'" class="cursor-pointer rounded-lg p-2 text-sm text-white hover:bg-neutral-800">All cases</p>
+                            <div
+                                @click="setFilter(item)"
+                                :class="state.activeFilter === item ? 'bg-neutral-800 text-white' : 'text-neutral-700'"
+                                class="cursor-pointer rounded-lg p-2 text-sm hover:bg-neutral-800"
+                                :key="item"
+                                v-for="item in state.categories"
+                            >
+                                {{ item }}
                             </div>
                         </div>
-                        <p @click="state.activeFilter = ''" :class="{ 'bg-neutral-800': state.activeFilter === '' }" class="cursor-pointer rounded-lg p-2 text-sm text-white hover:bg-neutral-800">All cases</p>
-                        <div
-                            @click=";(state.activeFilter = item), (state.toggleFilter = false)"
-                            :class="{ 'bg-neutral-800': state.activeFilter === item }"
-                            class="cursor-pointer rounded-lg p-2 text-sm text-white hover:bg-neutral-800"
-                            :key="item"
-                            v-for="item in state.categories"
-                        >
-                            {{ item }}
-                        </div>
-                    </div>
+                    </Transition>
                 </div>
             </div>
             <div class="mt-10 grid gap-8 px-4 lg:px-0" :class="state.viewType === 'grid' ? 'grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'">
@@ -181,5 +183,10 @@ function getCategories() {
         if (state.categories.find((x) => x === item.category)) continue
         state.categories.push(item.category)
     }
+}
+
+function setFilter(value: string) {
+    state.activeFilter = value
+    state.toggleFilter = false
 }
 </script>

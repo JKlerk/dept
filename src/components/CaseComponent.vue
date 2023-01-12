@@ -14,10 +14,10 @@
             </div>
             <div>
                 <h1>{{ props.case.name }}</h1>
-                <p class="text-sm font-bold text-neutral-400">{{ props.case.company }}</p>
+                <p class="text-sm text-neutral-400">{{ props.case.company }}</p>
             </div>
             <div class="my-auto flex flex-1 justify-end">
-                <svg xmlns="http://www.w3.org/2000/svg" class="my-auto h-8 w-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" class="my-auto h-8 w-8 stroke-neutral-300" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <polyline points="9 6 15 12 9 18" />
                 </svg>
