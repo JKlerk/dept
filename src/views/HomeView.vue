@@ -2,6 +2,18 @@
     <div>
         <div class="mx-auto max-w-7xl">
             <HeaderComponent></HeaderComponent>
+            <div class="relative font-inter">
+                <img class="" src="https://images.unsplash.com/photo-1672162723391-9fd523f02f69?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY3MzQ4MTk3OA&ixlib=rb-4.0.3&q=80&w=1400" />
+                <div class="absolute top-0 flex h-full w-full items-center justify-center">
+                    <h1 class="font-teko text-9xl lg:ml-20 lg:mb-20">Work</h1>
+                    <div class="m-20 hidden flex-1 justify-end self-end lg:flex">
+                        <p class="cursor-pointer place-self-end self-end bg-neutral-900 p-2 px-4 text-white transition-colors duration-100 hover:bg-neutral-800">View case</p>
+                    </div>
+                </div>
+            </div>
+            <div class="m-4 block lg:hidden">
+                <p class="cursor-pointer bg-neutral-900 p-2 px-4 text-center uppercase text-white transition-colors duration-100 hover:bg-neutral-800">View case</p>
+            </div>
             <div class="mt-4 flex">
                 <div class="grid grid-cols-2 gap-x-4 px-2">
                     <div class="my-auto cursor-pointer rounded-lg p-1">
