@@ -6,10 +6,5 @@ export const useStore = defineStore({
         showNav: false,
     }),
     getters: {},
-    actions: {
-        toggleNav(val: boolean) {
-            this.showNav = val
-            val ? (document.querySelector('body')!.style.overflow = 'hidden') : (document.querySelector('body')!.style.overflow = 'auto')
-        },
-    },
+    actions: {},
 })

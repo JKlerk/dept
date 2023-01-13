@@ -7,7 +7,7 @@
                 <div class="absolute top-0 flex h-full w-full items-center justify-center">
                     <h1 class="font-teko text-9xl lg:ml-20 lg:mb-20">Work</h1>
                     <div class="m-20 hidden flex-1 justify-end self-end lg:flex">
-                        <p class="cursor-pointer place-self-end self-end bg-neutral-900 p-2 px-4 text-white transition-colors duration-100 hover:bg-neutral-800">View case</p>
+                        <button class="place-self-end self-end bg-neutral-900 p-2 px-4 text-white transition-colors duration-100 hover:bg-neutral-800">View case</button>
                     </div>
                 </div>
             </div>
@@ -16,7 +16,7 @@
             </div>
             <div class="mt-4 flex">
                 <div class="grid grid-cols-2 gap-x-4 px-2">
-                    <div class="my-auto rounded-lg p-1">
+                    <button class="my-auto rounded-lg p-1">
                         <svg
                             @click="state.viewType = 'list'"
                             xmlns="http://www.w3.org/2000/svg"
@@ -36,8 +36,8 @@
                             <line x1="5" y1="12" x2="5" y2="12.01" />
                             <line x1="5" y1="18" x2="5" y2="18.01" />
                         </svg>
-                    </div>
-                    <div class="my-auto rounded-lg p-1">
+                    </button>
+                    <button class="my-auto rounded-lg p-1">
                         <svg
                             @click="state.viewType = 'grid'"
                             xmlns="http://www.w3.org/2000/svg"
@@ -55,38 +55,40 @@
                             <rect x="4" y="14" width="6" height="6" rx="1" />
                             <rect x="14" y="14" width="6" height="6" rx="1" />
                         </svg>
-                    </div>
+                    </button>
                 </div>
                 <div class="relative mr-2 flex flex-1 justify-end">
-                    <div @click="state.toggleFilter = true" class="my-auto flex cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-6 w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <button @click="state.toggleFilter = true" class="my-auto flex stroke-neutral-800 transition-colors duration-100 hover:stroke-indigo-500 hover:text-indigo-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-6 w-6" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M5.5 5h13a1 1 0 0 1 .5 1.5l-5 5.5l0 7l-4 -3l0 -4l-5 -5.5a1 1 0 0 1 .5 -1.5" />
                         </svg>
                         <p class="my-auto" for="Active Filter">Filter</p>
-                    </div>
+                    </button>
                     <Transition name="slide-small">
                         <div v-if="state.toggleFilter" class="absolute top-12 z-10 w-64 space-y-4 rounded-lg bg-neutral-900 p-5 font-inter">
                             <div class="flex">
                                 <p class="font-bold text-white">Category</p>
                                 <div class="flex flex-1 justify-end">
-                                    <svg @click="state.toggleFilter = false" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cursor-pointer stroke-white" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <line x1="18" y1="6" x2="6" y2="18" />
-                                        <line x1="6" y1="6" x2="18" y2="18" />
-                                    </svg>
+                                    <button class="transition-transform duration-100 hover:scale-125" @click="state.toggleFilter = false">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cursor-pointer stroke-white" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <line x1="18" y1="6" x2="6" y2="18" />
+                                            <line x1="6" y1="6" x2="18" y2="18" />
+                                        </svg>
+                                    </button>
                                 </div>
                             </div>
-                            <p @click="setFilter('')" :class="state.activeFilter === '' ? 'text-white' : 'text-neutral-700'" class="cursor-pointer rounded-lg p-2 text-sm text-white hover:bg-neutral-800">All cases</p>
-                            <div
+                            <button @click="setFilter('')" :class="state.activeFilter === '' ? 'text-white' : 'text-neutral-700'" class="cursor-pointer rounded-lg p-2 text-sm text-white hover:bg-neutral-800">All cases</button>
+                            <button
                                 @click="setFilter(item)"
                                 :class="state.activeFilter === item ? 'bg-neutral-800 text-white' : 'text-neutral-700'"
-                                class="cursor-pointer rounded-lg p-2 text-sm hover:bg-neutral-800"
+                                class="block cursor-pointer rounded-lg p-2 text-sm hover:bg-neutral-800"
                                 :key="item"
                                 v-for="item in state.categories"
                             >
                                 {{ item }}
-                            </div>
+                            </button>
                         </div>
                     </Transition>
                 </div>
@@ -119,7 +121,7 @@
         </div>
         <div class="relative">
             <FooterComponent></FooterComponent>
-            <div @click="scrollToTop" class="absolute bottom-0 right-0 col-span-1 hidden h-full w-1/12 cursor-pointer items-center justify-center bg-white lg:flex">
+            <button @click="scrollToTop" class="absolute bottom-0 right-0 col-span-1 hidden h-full w-1/12 cursor-pointer items-center justify-center bg-white lg:flex">
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 stroke-indigo-500" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -129,7 +131,7 @@
                     </svg>
                     <h1 class="text-center font-teko text-2xl text-indigo-500">TOP</h1>
                 </div>
-            </div>
+            </button>
         </div>
     </div>
 </template>
